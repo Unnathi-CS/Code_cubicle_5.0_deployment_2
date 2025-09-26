@@ -5,6 +5,8 @@ from datetime import datetime
 import json
 from Slack_ingestion.ai_service import ai_service
 from Slack_ingestion.utils import markdown_to_html, clean_message_text, highlight_keywords, format_user_mention
+from flask import Blueprint, jsonify, render_template  # ✅ added Blueprint here
+from slack_sdk import WebClient
 
 # 🔹 Setup
 slack_bp = Blueprint("slack_dashboard", __name__)
@@ -122,5 +124,6 @@ def mood():
     messages = fetch_messages(channel_id, limit=300)
     analysis = analyze_mood(messages)
     return jsonify(analysis)
+
 
 
