@@ -6,4 +6,6 @@ pandas
 pathway
 requests
 gunicorn
+slack_sdk>=3.21.3
+
 
