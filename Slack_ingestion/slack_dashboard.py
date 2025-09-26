@@ -3,7 +3,6 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime
 import json
-from authlib.integrations.flask_client import OAuth
 from Slack_ingestion.ai_service import ai_service
 from Slack_ingestion.utils import markdown_to_html, clean_message_text, highlight_keywords, format_user_mention
 
@@ -123,4 +122,5 @@ def mood():
     messages = fetch_messages(channel_id, limit=300)
     analysis = analyze_mood(messages)
     return jsonify(analysis)
+
 
