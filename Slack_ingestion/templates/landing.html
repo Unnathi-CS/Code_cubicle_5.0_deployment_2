@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon Wall of Truth</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body class="bg-light text-center">
+
+  <!-- 🔹 Starfield Background -->
+  <div id="space-animation" class="starfield-background"></div>
+
+  <div class="container vh-100 d-flex flex-column justify-content-center align-items-center">
+    <div class="starfield-content">
+      <h1 class="mb-4 text-white">Hackathon "Wall of Truth"</h1>
+      <p class="lead mb-5 text-white">
+        Real-time Slack integration to surface problems teams face during hackathons.  
+        Summarize live updates, discover bottlenecks, and track solutions dynamically.
+      </p>
+      <div class="d-flex gap-3 justify-content-center">
+        <a href="{{ url_for('chatbot') }}" class="btn btn-primary btn-lg starfield-btn">🤖 AI Hackathon Assistant</a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-success btn-lg starfield-btn">📊 Live Dashboard</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <p>Made with <span class="heart">♥</span> She-E-Os</p>
+      </div>
+      <div class="footer-right">
+        <p>© 2025 She-E-Os. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap + JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='js/star_gazing.js') }}"></script>
+</body>
+</html>

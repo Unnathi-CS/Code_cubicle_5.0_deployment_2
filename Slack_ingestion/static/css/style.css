@@ -1,0 +1,365 @@
+/* Chat container */
+
+
+
+.chat-box {
+  height: 500px;
+  overflow-y: auto;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(26, 26, 46, 0.1)); /* gradient frosted effect */
+  backdrop-filter: blur(10px); /* makes the background gradient show nicely */
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat message common style */
+.message {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 12px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+/* User message bubble */
+.user {
+  background: linear-gradient(135deg, #220244, #03245d, #4a90e2); /* gradient purple → blue → lighter blue */
+  align-self: flex-end;
+  color: #fff; /* white text for readability */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Bot message bubble */
+.bot {
+  background: linear-gradient(135deg, #bf346e, #1a5fc, #2a7fc); /* gradient darker purple → blue → lighter blue */
+  color: #fff; /* white text for contrast */
+  align-self: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Bot message content styling */
+.bot p {
+  color: #0e073e !important;
+  margin: 0;
+}
+
+.bot strong {
+  color: #0e073e !important;
+  font-weight: bold;
+}
+
+.bot em {
+  color: #0e073e !important;
+  font-style: italic;
+}
+
+
+/* Custom Navbar */
+.custom-navbar {
+  background: linear-gradient(90deg, #1a1a1a, #2d2d2d); /* gradient dark gray → lighter gray */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  padding: 0.8rem 1rem;
+}
+
+/* Navbar brand */
+.custom-navbar .navbar-brand {
+  font-weight: bold;
+  color: #fff !important;
+  font-size: 1.4rem;
+}
+
+/* Navbar links */
+.custom-navbar .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #ffd700 !important; /* golden on hover */
+}
+
+/* Hamburger container */
+.navbar-toggler {
+  border: none; /* remove default border */
+  outline: none;
+}
+
+/* Hamburger lines */
+.custom-toggler-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px; /* total height for 3 lines */
+}
+
+.custom-toggler-icon span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #ffd700; /* golden bars */
+  border-radius: 2px;
+}
+
+
+/* Optional: Animate hamburger to X on open */
+/* You can add JS to toggle a class on click if you want the bars to rotate */
+
+/* Scrollable insight sections */
+.scrollable-insight {
+  scrollbar-width: thin;
+  scrollbar-color: #6c757d #f8f9fa;
+}
+
+.scrollable-insight::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-insight::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  border-radius: 3px;
+}
+
+.scrollable-insight::-webkit-scrollbar-thumb {
+  background: #6c757d;
+  border-radius: 3px;
+}
+
+.scrollable-insight::-webkit-scrollbar-thumb:hover {
+  background: #495057;
+}
+
+/* Insight card styling */
+.insight-card .card-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.insight-card .badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Starfield Background Styles */
+.starfield-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #0f0f0f 75%, #000000 100%);
+}
+
+.starfield-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.starfield-card .card-header {
+  background: linear-gradient(90deg, #1a1a1a, #2d2d2d) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.starfield-card .card-body {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.starfield-card .card-footer {
+  background: rgba(248, 249, 250, 0.9);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure navbar is above starfield */
+.custom-navbar {
+  position: relative;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Navbar text visibility on dark background */
+.custom-navbar .navbar-brand {
+  color: #fff !important;
+}
+
+.custom-navbar .nav-link {
+  color: #fff !important;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #ffd700 !important;
+}
+
+/* Landing page starfield content */
+.starfield-content {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.starfield-btn {
+  background: linear-gradient(90deg, #1a1a1a, #2d2d2d) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  color: #fff !important;
+}
+
+.starfield-btn:hover {
+  background: linear-gradient(90deg, #2d2d2d, #3a3a3a) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  color: #fff !important;
+}
+
+/* Quick Questions Buttons */
+.quick-question-btn {
+  background: linear-gradient(135deg, #6a11cb, #2575fc, #4a90e2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.quick-question-btn:hover {
+  background: linear-gradient(135deg, #7a21db, #3576fc, #5aa0f2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Send Button */
+.send-btn {
+  background: linear-gradient(135deg, #6a11cb, #2575fc, #4a90e2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.send-btn:hover {
+  background: linear-gradient(135deg, #7a21db, #3576fc, #5aa0f2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Chat Card Styling */
+.chat-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 250, 0.95));
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.chat-card .card-header {
+  background: linear-gradient(135deg, #6a11cb, #2575fc, #4a90e2) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chat-card .card-body {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.9));
+  backdrop-filter: blur(10px);
+}
+
+.chat-card .card-footer {
+  background: linear-gradient(135deg, rgba(248, 249, 250, 0.9), rgba(255, 255, 255, 0.9));
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Dashboard Refresh Button */
+#refreshBtn {
+  background: linear-gradient(135deg, #6a11cb, #2575fc, #4a90e2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#refreshBtn:hover {
+  background: linear-gradient(135deg, #7a21db, #3576fc, #5aa0f2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Quick Questions Padding */
+.predefined-queries {
+  padding-left: 20px;
+}
+
+/* Footer Styling */
+.footer {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  color: #fff;
+  text-align: center;
+  padding: 12px 0;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.8;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.footer .heart {
+  color: #ff6b6b;
+  font-size: 1.1rem;
+  margin: 0 2px;
+}
+
+.footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer .footer-left {
+  text-align: left;
+}
+
+.footer .footer-right {
+  text-align: right;
+}
+
+/* Body padding for fixed footer */
+body {
+  padding-bottom: 60px;
+}
+
+/* Container spacing for footer */
+.container {
+  margin-bottom: 20px;
+}

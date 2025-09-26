@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon Dashboard - Real-time Insights</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    .insight-card {
+      transition: transform 0.2s ease-in-out;
+    }
+    .insight-card:hover {
+      transform: translateY(-2px);
+    }
+    .live-indicator {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- 🔹 Navbar -->
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Hackathon Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <div class="custom-toggler-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('landing') }}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('chatbot') }}">Chatbot</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ url_for('dashboard') }}">Dashboard</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 🔹 Dashboard Container -->
+  <div class="container mt-4">
+    
+    <!-- Live Status -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+          <span class="live-indicator me-2">🔴</span>
+          <strong>Live Monitoring Active</strong>
+          <span class="ms-auto" id="lastUpdate">Last updated: Just now</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4" id="statsRow">
+      <div class="col-md-3 mb-3">
+        <div class="card stat-card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Total Messages</h5>
+            <h2 class="card-text" id="totalMessages">-</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card stat-card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Active Users</h5>
+            <h2 class="card-text" id="uniqueUsers">-</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card stat-card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Questions</h5>
+            <h2 class="card-text" id="questionsCount">-</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="card stat-card">
+          <div class="card-body text-center">
+            <h5 class="card-title">Problems</h5>
+            <h2 class="card-text" id="problemsCount">-</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Insights -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <h3 class="mb-3">🤖 AI Insights</h3>
+      </div>
+    </div>
+
+    <div class="row" id="insightsRow">
+      <div class="col-md-4 mb-3">
+        <div class="card insight-card h-100">
+          <div class="card-header bg-danger text-white">
+            <h5 class="mb-0">🚨 Current Problems</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text" id="problemsInsight">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card insight-card h-100">
+          <div class="card-header bg-info text-white">
+            <h5 class="mb-0">❓ Top Questions</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text" id="questionsInsight">Loading...</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card insight-card h-100">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">📈 Trending Topics</h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text" id="trendingInsight">Loading...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Messages -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">💬 Recent Messages</h5>
+          </div>
+          <div class="card-body" style="max-height: 400px; overflow-y: auto;">
+            <div id="recentMessages">
+              <p class="text-muted">Loading recent messages...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Refresh Button -->
+    <div class="row mt-4">
+      <div class="col-12 text-center">
+        <button class="btn btn-primary btn-lg" id="refreshBtn">
+          🔄 Refresh Data
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap + JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

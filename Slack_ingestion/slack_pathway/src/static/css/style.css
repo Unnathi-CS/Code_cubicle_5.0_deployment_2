@@ -1,0 +1,90 @@
+/* Chat container */
+
+
+
+.chat-box {
+  height: 500px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.1); /* semi-transparent for frosted effect */
+  backdrop-filter: blur(10px); /* makes the background gradient show nicely */
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chat message common style */
+.message {
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 12px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+/* User message bubble */
+.user {
+  background-color: #d1e7dd; /* green bubble */
+  align-self: flex-end;
+  color: #000; /* text color for readability */
+}
+
+/* Bot message bubble */
+.bot {
+  background-color: #0d6efd; /* deep blue bubble */
+  color: #fff; /* white text for contrast */
+  align-self: flex-start;
+}
+
+
+/* Custom Navbar */
+.custom-navbar {
+  background: linear-gradient(90deg, #6a11cb, #2575fc); /* gradient purple → blue */
+  box-shadow: 0 4px 6px rgba(160, 162, 204, 0.2);
+  padding: 0.8rem 1rem;
+}
+
+/* Navbar brand */
+.custom-navbar .navbar-brand {
+  font-weight: bold;
+  color: #fff !important;
+  font-size: 1.4rem;
+}
+
+/* Navbar links */
+.custom-navbar .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #ffd700 !important; /* golden on hover */
+}
+
+/* Hamburger container */
+.navbar-toggler {
+  border: none; /* remove default border */
+  outline: none;
+}
+
+/* Hamburger lines */
+.custom-toggler-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px; /* total height for 3 lines */
+}
+
+.custom-toggler-icon span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #ffd700; /* golden bars */
+  border-radius: 2px;
+}
+
+
+/* Optional: Animate hamburger to X on open */
+/* You can add JS to toggle a class on click if you want the bars to rotate */
